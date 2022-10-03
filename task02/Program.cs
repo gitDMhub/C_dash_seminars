@@ -5,6 +5,9 @@ int x2 = Convert.ToInt32(Console.ReadLine());
 if (x1 > x2)
     Console.WriteLine("Первое число больше второго");
 else
-    Console.WriteLine("Второе число больше первого");
+    if (x1 == x2)
+        Console.WriteLine("Оба числа равны");
+    else
+        Console.WriteLine("Второе число больше первого");
 
 
