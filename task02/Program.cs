@@ -9,5 +9,3 @@ else
         Console.WriteLine("Оба числа равны");
     else
         Console.WriteLine("Второе число больше первого");
-
-
