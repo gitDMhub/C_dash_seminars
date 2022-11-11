@@ -6,4 +6,4 @@ double A = Convert.ToDouble(Console.ReadLine());
 Console.WriteLine("\nВведите любое целое число: ");
 int B = Convert.ToInt32(Console.ReadLine());
 for (int i = 1; i <= B; i++) result = result * A;
-    Console.WriteLine($"\n{A} в степени {B} = {Math.Round(result, 3)} (округлено до 3-го знака после запятой)");
+Console.WriteLine($"\n{A} в степени {B} = {Math.Round(result, 3)} (округлено до 3-го знака после запятой)");

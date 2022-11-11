@@ -28,7 +28,7 @@ for (int i = 0; i < matrix.GetLength(0); i++)
 }
 
 Console.Clear();
-Console.Write("Enter the number of rows and columns of the matrix separated by a space: ");
+Console.Write("Enter the number of rows and columns of the matrixes separated by a space: ");
 string[] num = Console.ReadLine().Split(' ');
 int n = int.Parse(num[0]);
 int m = int.Parse(num[1]);
