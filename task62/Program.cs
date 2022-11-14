@@ -1,56 +1,58 @@
 ﻿// Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 
-void InitialMatrix(int[,] matrix)
-{
-int ColHeight = matrix.GetLength(0);
-int RowLength = matrix.GetLength(1);
+int[,] matrix = new int[4,4];
 int Num = 1;
 int Tr = 0;
-for (int pass = 1; pass <= matrix.GetLength(0); pass++)
+int Tc = 0;
+// 00 -> 03
+for (int j = Tr; j < matrix.GetLength(1); j++)
     {
-    if (pass%2 != 0)
-        {
-        for (int j = Tr; j < RowLength; j++)
-            {
-            matrix[Tr,j] = Num;
-            Num++;
-            }
-        RowLength--; //=3, 2
-        for (int i = Tr+1; i < ColHeight; i++)
-            {
-            matrix[i,RowLength] = Num;
-            Num++;
-            }
-        Tr++; //=1, 2
-        ColHeight--; //=3, 2
-        }
-    else
-        {
-        for (int j = RowLength-1; j >= pass-2; j--)
-            {
-            matrix[ColHeight,j] = Num;
-            Num++;
-            }
-        for (int i = ColHeight; i >= pass-1; i--)
-            {
-            matrix[i,pass-2] = Num;
-            Num++;
-            }
-        }
+    matrix[Tr,j] = Num;
+    Num++;
+    Tc = j; //=3
     }
+// 03 -> 33
+for (int i = Tr+1; i < matrix.GetLength(0); i++)
+    {
+    matrix[i,Tc] = Num;
+    Num++;
+    }
+// 30 <- 32
+for (int j = Tc-1; j >= Tr; j--)
+    {
+    matrix[Tc,j] = Num;
+    Num++;
+    }
+// 10 <- 20
+for (int i = Tc-1; i > Tr; i--)
+    {
+    matrix[i,Tr] = Num;
+    Num++;
+    }
+Tr++; //=1
+// 11 -> 12
+for (int j = Tr; j < Tc; j++)
+    {
+    matrix[Tr,j] = Num;
+    Num++;
+    }
+Tc--; //2
+// 21 <- 22
+for (int j = Tc; j >= Tr; j--)
+    {
+    matrix[Tc,j] = Num;
+    Num++;
+    }
+Console.Clear();
+Console.WriteLine("4x4 Matrix Filled With Consecutive Numbers in a Spiral:\n");
 for (int i = 0; i < matrix.GetLength(0); i++)
     {
     for (int j = 0; j < matrix.GetLength(1); j++)
         {
-        Console.Write($"{matrix[i, j]} \t");
+        if (matrix[i,j] < 10)
+            {Console.Write($"0{matrix[i, j]} \t");}
+        else
+            {Console.Write($"{matrix[i, j]} \t");}
         }
     Console.WriteLine();
     }
-}
-
-Console.Clear();
-Console.Write("Enter length of matrix sides: ");
-int n = Convert.ToInt32(Console.ReadLine());
-int[,] matrix = new int[n, n];
-Console.WriteLine("\n2D Matrix Filled With Numbers in a Spiral:");
-InitialMatrix(matrix);
